@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>יוסף צדוק — סיפור חיים</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  @page {
+    size: A5;
+    margin: 20mm 17mm 22mm 17mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 9pt;
+      color: #8a6a3b;
+    }
+  }
+  @page cover { margin: 0; @bottom-center { content: none; } }
+  @page plain { @bottom-center { content: none; } }
+
+  :root {
+    --ink: #2e2218;
+    --brown: #5a3a1e;
+    --gold: #b08a4a;
+    --paper: #fbf7ef;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 11.5pt;
+    line-height: 1.7;
+    color: var(--ink);
+    text-align: justify;
+  }
+
+  /* ---------- cover ---------- */
+  .cover {
+    page: cover;
+    width: 148mm; height: 210mm;
+    background:
+      radial-gradient(ellipse at 50% 38%, rgba(255,240,205,.18), transparent 60%),
+      linear-gradient(160deg, #4a2e17 0%, #2f1d0f 100%);
+    color: #f3e6c8;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    position: relative;
+    break-after: page;
+  }
+  .cover .frame {
+    position: absolute; inset: 9mm;
+    border: 1.2pt solid rgba(214,180,115,.75);
+    outline: .5pt solid rgba(214,180,115,.45);
+    outline-offset: -3mm;
+  }
+  .cover .small { font-family: 'Heebo', sans-serif; font-weight: 300; letter-spacing: .35em; font-size: 9.5pt; color: #d6b473; }
+  .cover h1 { font-weight: 900; font-size: 40pt; margin: 6mm 0 2mm; line-height: 1.15; color: #fbefd2; }
+  .cover .sub { font-size: 15pt; color: #e8d3a6; }
+  .cover .orn { color: #d6b473; font-size: 16pt; margin: 9mm 0; letter-spacing: .5em; }
+  .cover .eighty { font-family: 'Suez One', serif; font-size: 54pt; color: #d6b473; line-height: 1; }
+  .cover .eighty-cap { font-size: 12pt; color: #e8d3a6; margin-top: 2mm; }
+
+  /* ---------- general pages ---------- */
+  .plain { page: plain; }
+  .center-page {
+    height: 168mm;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    break-after: page;
+  }
+  .dedication { font-size: 14pt; line-height: 2; color: var(--brown); }
+  .dedication .sig { margin-top: 8mm; font-size: 12pt; color: var(--gold); }
+
+  .toc { break-after: page; }
+  .toc h2 { text-align: center; }
+  .toc ol { list-style: none; padding: 0; margin: 8mm 0 0; counter-reset: c; }
+  .toc li { counter-increment: c; padding: 2.2mm 0; border-bottom: .4pt dotted #cdb68a; font-size: 12pt; }
+  .toc li::before { content: counter(c) ". "; color: var(--gold); font-weight: 700; }
+
+  .chapter { break-before: page; }
+  .chapter-head { text-align: center; margin: 2mm 0 7mm; }
+  .chapter-head .num {
+    font-family: 'Heebo', sans-serif; font-weight: 300; letter-spacing: .3em;
+    color: var(--gold); font-size: 9pt;
+  }
+  h2 {
+    font-weight: 900; color: var(--brown);
+    font-size: 21pt; line-height: 1.25; margin: 2mm 0 0;
+  }
+  .chapter-head .rule { color: var(--gold); margin-top: 3mm; letter-spacing: .4em; }
+  p { margin: 0 0 3.2mm; orphans: 3; widows: 3; }
+  .chapter > p:first-of-type::first-letter {
+    font-weight: 900; color: var(--brown); font-size: 1.5em;
+  }
+
+  .quote {
+    margin: 5mm 3mm; padding: 3mm 5mm;
+    border-right: 2.5pt solid var(--gold);
+    background: #f6eedd;
+    font-size: 12pt; line-height: 1.7; color: var(--brown);
+    text-align: right; break-inside: avoid;
+  }
+  .quote::before { content: "״"; color: var(--gold); font-size: 20pt; line-height: 0; vertical-align: -7pt; margin-left: 1mm; }
+
+  .note {
+    font-family: 'Heebo', sans-serif; font-size: 8.8pt; color: #7a6650;
+    text-align: center; margin-top: 6mm;
+  }
+
+  /* ---------- family tree ---------- */
+  .tree { margin: 4mm 0 6mm; text-align: center; break-inside: avoid; }
+  .tree .side { font-family: 'Heebo', sans-serif; font-size: 8.5pt; color: var(--gold); letter-spacing: .15em; margin-bottom: 1.5mm; }
+  .tree .cols { display: flex; gap: 6mm; justify-content: center; }
+  .tree .col { flex: 1; }
+  .box {
+    display: inline-block; border: .8pt solid var(--gold); border-radius: 2mm;
+    padding: 1.5mm 3mm; background: #fffaf0; font-size: 10pt; line-height: 1.4;
+  }
+  .box small { display: block; font-size: 7.8pt; color: #8a7458; font-family: 'Heebo', sans-serif; }
+  .vline { width: 0; height: 4.5mm; border-right: .8pt solid var(--gold); margin: 0 auto; }
+  .box.main { background: var(--brown); color: #fbefd2; border-color: var(--brown); font-weight: 700; font-size: 12pt; padding: 2mm 6mm; }
+  .box.main small { color: #e3cc9c; }
+
+  /* ---------- blank pages for blessings ---------- */
+  .lines { break-before: page; }
+  .lines .ln { border-bottom: .5pt solid #d9c7a2; height: 9.2mm; }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<section class="cover">
+  <div class="frame"></div>
+  <div class="small">סיפור חיים</div>
+  <h1>יוסף צדוק</h1>
+  <div class="sub">הסיפור שלי, במילים שלי</div>
+  <div class="orn">✦ ✦ ✦</div>
+  <div class="eighty">80</div>
+  <div class="eighty-cap">לכבוד יום הולדתי השמונים</div>
+</section>
+
+<!-- ================= DEDICATION ================= -->
+<section class="plain center-page">
+  <div class="dedication">
+    לאבא,<br>
+    שסיפר — ואנחנו הקשבנו.<br>
+    באהבה גדולה,<br>
+    לכבוד שמונים שנות חיים.
+    <div class="sig">הילדים</div>
+  </div>
+</section>
+
+<!-- ================= TOC ================= -->
+<section class="plain toc">
+  <h2>תוכן</h2>
+  <ol>
+    <li>במקום הקדמה</li>
+    <li>השורשים — מפרס לארץ ישראל</li>
+    <li>ילד של שנות החמישים</li>
+    <li>בית הספר, ומה שלא היה</li>
+    <li>נוער עובד, ידיים עובדות</li>
+    <li>לחפש פרנסה</li>
+    <li>פרס, שידוך וחתונה</li>
+    <li>על הטנקים</li>
+    <li>מה למדתי בדרך</li>
+    <li>לילדים ולנכדים</li>
+  </ol>
+</section>
+
+<!-- ================= 1 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק ראשון</div><h2>במקום הקדמה</h2><div class="rule">✦</div></div>
+
+  <p>ילדים יקרים שלי,</p>
+  <p>יום אחד, בשיחה רגילה של ערב שבת, הניחו לפניי טלפון ואמרו לי: "אבא, תספר". לחצו שם על כמה כפתורים, ואני התחלתי לדבר. ככה, בלי תכנון, מצאתי את עצמי מסדר לוח זמנים של החיים שלי — מתי עלינו, מתי למדתי, איפה עבדתי, מתי התחתנתי — ופתאום ראיתי איך הכול מתכנס לסיפור אחד.</p>
+  <p>יש במשפחה מי שאומרים שאני קצת דברן. אמא שלכם בטח תגיד שחצי ממה שאני מספר זה המצאות. אבל אתם החלטתם להאמין לי, ועל זה אני מודה לכם.</p>
+  <p>מה שתקראו כאן הוא לא ספר היסטוריה. זה הסיפור של ילד שעלה מפרס לארץ ישראל, גדל בשנים קשות, עבד בידיים כל החיים, הקים בית — וגידל אתכם. כתבתי אותו כדי שתדעו מאיפה באתם, וכדי שהנכדים ידעו שסבא שלהם היה פעם ילד, ואחר כך נער עובד, ואחר כך חתן צעיר שחיפש את דרכו.</p>
+
+  <div style="break-inside:avoid">
+  <div class="quote">אתה יכול לכתוב ספר כבר. נצטרך להרחיב — מה שסיפרתי עד עכשיו זה רק מבואות.</div>
+  <p>אז הנה, הרחבנו.</p>
+  </div>
+</section>
+
+<!-- ================= 2 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק שני</div><h2>השורשים — מפרס לארץ ישראל</h2><div class="rule">✦</div></div>
+
+  <p>המשפחה שלי באה מפרס, משני הצדדים — גם מצד אבא וגם מצד אמא.</p>
+  <p>מצד אבי, חיים, הסבא שלי היה אברהם והסבתא שלי זריהן. ההורים של סבתא זריהן היו ניסן וטאוס. טאוס, בפרסית, זה טווס — שם יפה וגאה, כמו שהיו נותנים פעם.</p>
+  <p>מצד אמי, מרים, המשפחה היא משפחת כהן. אמא שלי נקראה בפרס מונבר — שפירושו בפרסית "אור". ההורים שלה היו יוסף כהן וננה, ואבא של סבא יוסף היה יצחק כהן.</p>
+
+  <div class="tree">
+    <div class="cols">
+      <div class="col">
+        <div class="side">מצד אבא</div>
+        <div class="box">ניסן וטאוס<small>הורי סבתא זריהן</small></div>
+        <div class="vline"></div>
+        <div class="box">אברהם וזריהן<small>סבא וסבתא</small></div>
+        <div class="vline"></div>
+        <div class="box">חיים<small>אבי</small></div>
+        <div class="vline"></div>
+      </div>
+      <div class="col">
+        <div class="side">מצד אמא</div>
+        <div class="box">יצחק כהן<small>אבי סבי</small></div>
+        <div class="vline"></div>
+        <div class="box">יוסף כהן וננה<small>סבא וסבתא</small></div>
+        <div class="vline"></div>
+        <div class="box">מרים (מונבר)<small>אמי</small></div>
+        <div class="vline"></div>
+      </div>
+    </div>
+    <div style="width:calc(50% + 3mm);margin:0 auto;border-top:.8pt solid var(--gold)"></div>
+    <div class="vline" style="height:5mm"></div>
+    <div class="box main">יוסף צדוק<small>אני</small></div>
+  </div>
+
+  <p>שם המשפחה המקורי שלנו היה קדאם־זדה. בפרסית זה אומר בערך "יש לו מזל". כשעלינו לארץ הציעו לנו, כמו להרבה עולים באותן שנים, להחליף את שם המשפחה לשם עברי. נתנו לנו לבחור מתוך רשימה של שמות — ואנחנו בחרנו בשם "צדוק".</p>
+  <p>אני חושב שיש בזה משהו יפה: השם הישן אמר שיש לנו מזל, והשם החדש מזכיר צדק. ואם תשאלו אותי, בסוף היה לנו גם וגם.</p>
+</section>
+
+<!-- ================= 3 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק שלישי</div><h2>ילד של שנות החמישים</h2><div class="rule">✦</div></div>
+
+  <p>עלינו לארץ בשנת 1951. הייתי ילד קטן, והארץ הייתה מדינה צעירה שקלטה גלים גדולים של עולים, הרבה מהם מארצות המזרח.</p>
+  <p>אבא שלי, חיים, הגיע עם קצת כסף. היה לו חלום פשוט: לפתוח חנות. הוא הלך לבקש רישיון, ואמרו לו: "לא, אדוני. העדיפות היא לאלה שעברו את השואה". ככה זה היה. הכסף הקטן שהביא איתו — נאכל עם הזמן.</p>
+  <p>אז הוא הלך לעבוד בשוק, אצל הדוד שלי, שהייתה לו חנות של תבלינים ודברי מכולת. אבא שלי היה אדם עם נכות, אבל הוא לא נתן לה לעצור אותו. הוא תמיד ניסה להוכיח שהנכות לא מפריעה לו בכלל, ועבד יותר טוב מאנשים בריאים. היו לו חמישה ילדים לפרנס, ולא היה קל להרוויח.</p>
+
+  <div class="quote">זאת הייתה מציאות אחרת. קשה היה להרוויח. היו לו חמישה ילדים — בן אדם נכה — והוא תמיד ניסה להוכיח את עצמו.</div>
+
+  <p>אלה היו שנות הצנע. היו תלושי מזון — קיבלת קצת לחודש, ויותר מזה לא יכולת לקנות. הרבה פעמים העולים היו עובדים שבועיים בחודש, ולפי זה קיבלו משכורת. מי שהיה לו "הפנקס האדום" קיבל עדיפות בעבודה, ומי שלא — חיכה. לעולים מהמזרח היו נותנים את העבודות הפשוטות והקשות: ייעור, ניקוי שטחים מאבנים. לפעמים זה הרגיש קצת כמו במצרים, עם התבן והלבנים.</p>
+  <p>אני לא אומר את זה מתוך כעס. אני חושב שלקח לנו זמן — לכולנו — לקלוט שאנחנו עם אחד. כל אחד דאג למשפחה שלו ולחברים שלו, ומי שדיבר יידיש עזר למי שדיבר יידיש, כי הם הבינו זה את זה. ככה זה כשעם שלם מתאסף ממקומות שונים. לוקח זמן.</p>
+</section>
+
+<!-- ================= 4 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק רביעי</div><h2>בית הספר, ומה שלא היה</h2><div class="rule">✦</div></div>
+
+  <p>למדתי בבית ספר יסודי. אני זוכר מורה אחד שהיו אצלו בכיתה תלמידים שנרדמו על השולחן. הוא לא היה מעיר אותם. "תעזבו," היה אומר, "גם חמורים צריכים". זה מה שחשבו אז — שלא כולם צריכים ללמוד, שמישהו צריך גם לעבוד בעבודות הפשוטות.</p>
+
+  <div class="quote">היום כבר לא צריכים חמורים. היום אפילו חמור — צריכה להיות לו השכלה.</div>
+
+  <p>כשסיימתי את בית הספר היסודי, אבא שלי אמר לי: "תשמע, יש פה שני מפעלים, מפעלי נייר. אם תהיה קבוע שם — אתה מסודר בחיים". בתור פועל פשוט. זה היה החלום שלו בשבילי: עבודה קבועה, ביטחון.</p>
+  <p>אתם צריכים להבין — התיכון אז לא היה בחינם. היה צריך לשלם עליו, ואבא שלי אמר ביושר שאין לו. חוק חינוך חינם הגיע רק אחר כך. גם הדודים שלכם, בני ורובן, לא למדו בחינם; רובן הלך לקיבוץ, לחברת נוער, ושם למד.</p>
+  <p>היו גם תקופות שבהן עודדו את בני עדות המזרח ללמוד, והציעו לי ללכת לתוכנית לימודים. אבל אני לא הייתי חזק במתמטיקה ובדברים כאלה, ולא ידעתי אז שאני מסוגל ליותר. ובעיקר — כשאומרים לך מראש שאין למי לעזור לך להתקדם, אתה לא נלחם כל כך על הלימודים.</p>
+
+  <div class="quote">אם אבא שלך אומר לך: "תלמד, הכול עליי, אני אביא אותך לאוניברסיטה" — אתה מקבל ביטחון. אבל אם הוא מראה לך מפעלים ואומר "תבחר בין זה לזה"...</div>
+
+  <p>שנים רבות אחר כך, בגיל שישים, השלמתי תיכון. הייתי צריך את זה בשביל דרגה בעבודה — אבל בתוך תוכי, זה היה גם בשבילי. הילד ההוא, שלא שלחו אותו לתיכון, סגר סוף סוף מעגל.</p>
+</section>
+
+<!-- ================= 5 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק חמישי</div><h2>נוער עובד, ידיים עובדות</h2><div class="rule">✦</div></div>
+
+  <p>אחרי בית הספר יצאתי לעבוד, והצטרפתי לנוער העובד. שם למדתי מקצוע — מסגרות. עבדתי גם כמכונאי, ועבדתי במסגרייה של בעלים שהיה לו מפעל קטן. כבר אז, לפני הצבא, הידיים שלי למדו לעבוד עם ברזל.</p>
+  <p>לא ידעתי אז שזה יהיה המקצוע של כל החיים שלי. נער צעיר לא חושב על "קריירה". הוא חושב איך להביא קצת כסף הביתה ואיך ללמוד משהו שיהיה שווה.</p>
+  <p>בשנת 1965, בגיל שמונה עשרה, התגייסתי לצבא.</p>
+</section>
+
+<!-- ================= 6 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק שישי</div><h2>לחפש פרנסה</h2><div class="rule">✦</div></div>
+
+  <p>אחרי שהשתחררתי התחלתי לחפש את מקומי. הלכתי לעבוד במפעל אליאנס, בבניית צמיגים. זאת הייתה עבודת משמרות: שבוע בוקר, שבוע ערב, שבוע לילה. לא היו לך חיים. זה לא התאים לי, ועזבתי.</p>
+  <p>אחר כך נסעתי לעבוד בבנייה במחנה רמון, בדרום. בנו שם מבנים בבנייה טרומית. עבדתי שם חודש, וזה לא הסתדר. חזרתי לתל אביב, ומצאתי עבודה כחשמלאי בניין — ואת זה דווקא אהבתי.</p>
+
+  <div class="quote">מה אתה עושה? צריך לחפש את הפרנסה. היא לא באה בקלות. עד שבן אדם מתקבע על משהו — זה לוקח זמן.</div>
+
+  <p>אני מספר לכם את זה כי אני רוצה שתדעו: לא מצאתי את הדרך שלי ביום אחד. ניסיתי, עזבתי, ניסיתי שוב. אין בזה שום בושה. ככה בונים חיים.</p>
+</section>
+
+<!-- ================= 7 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק שביעי</div><h2>פרס, שידוך וחתונה</h2><div class="rule">✦</div></div>
+
+  <p>אחרי מלחמת יום כיפור נסעתי לפרס, לארבעה חודשים. חזרתי לארץ — והתחתנתי.</p>
+  <p>אמא שלכם הייתה החברה הראשונה שלי. זה היה שידוך. אני לא הייתי מאלה שיוצאים עם בנות; לא ידעתי בכלל איך מתחילים. אם לא היה שידוך — כנראה לא הייתי מנסה בכלל.</p>
+  <p>כשסיפרתי את זה לבן שלי, הוא צחק ואמר שזה גילוי מעניין. האמת שגם אני לא חשבתי על זה קודם — רק כשישבנו וסידרנו את לוח הזמנים ראיתי בעצמי איך הכול מתחבר: המלחמה, הנסיעה, החזרה, החתונה. ככה זה מתכנס לאירוע אחד.</p>
+  <p>ומאז — אנחנו יחד. כל מה שבנינו, בנינו שנינו.</p>
+</section>
+
+<!-- ================= 8 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק שמיני</div><h2>על הטנקים</h2><div class="rule">✦</div></div>
+
+  <p>אחרי החתונה הלכתי לעבוד בצבא. בהתחלה עבדתי כמה חודשים ביחידת הבינוי — בנינו ושיפצנו במחנות צבא, ואני עבדתי שם במסגרייה.</p>
+  <p>אבל שם היו בעיקר אנשים מבוגרים, שכל הזמן ספרו את החודשים עד הפנסיה. זה לא היה בשבילי. שמעתי שיש מקום אחר, שבו בונים טנקים. הלכתי לאחראי ואמרתי לו: "תשמע, אני רוצה לעבוד שם". הוא ניסה לשכנע אותי שימצא לי עבודה טובה יותר, אבל אני התעקשתי. "אתה רוצה? בסדר," הוא אמר, ונתן לי פתק.</p>
+  <p>הפתק הזה שינה לי את החיים. שם, על הטנקים, עבדתי כמסגר — המקצוע שלמדתי עוד בנוער העובד. שם התפרנסתי בכבוד.</p>
+
+  <div class="quote">עובדה — התפרנסתי פרנסה. פרנסה קבועה, עבודה, חברים. גידלתי אתכם — יחד איתה, כמובן.</div>
+</section>
+
+<!-- ================= 9 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק תשיעי</div><h2>מה למדתי בדרך</h2><div class="rule">✦</div></div>
+
+  <p>שאלו אותי פעם אם אני מצטער. אם אני חושב שיכולתי לעשות יותר, ללמוד יותר, להגיע רחוק יותר. ואני אומר: אני מסתכל על מה שעברתי — אבל מול המציאות שהייתה אז. לא מול המציאות של היום. ובמציאות ההיא, עשיתי את הכי טוב שאפשר.</p>
+
+  <div class="quote">להיות שמח בטוב שיש לי — זאת בחירה.</div>
+
+  <p>אבל אל תבינו אותי לא נכון. "איזהו עשיר — השמח בחלקו" זה דבר אחד, ולהציב מטרות זה דבר אחר. צריך גם וגם. צריך לשים לעצמך מטרות בחיים ולנסות להגשים אותן — ואחר כך, בדיעבד, לשמוח במה שיצא. זה לא סותר.</p>
+  <p>ועוד דבר: אנשים אומרים "אין לי זמן ללמוד עכשיו, אני עמוס". זה לא נכון. לכל גיל יש את העומס שלו. אין גיל בלי עומס. אם מחכים לרגע שבו יהיה קל — מחכים לנצח. אני השלמתי תיכון בגיל שישים, אז אל תגידו לי שמאוחר מדי.</p>
+
+  <div class="quote">לכל גיל יש עומס. כל גיל — יש לו את העומס שלו.</div>
+
+  <p>והדבר האחרון, אולי החשוב מכולם: תאמינו בילדים שלכם. תגידו להם "תלמד, אני מאחוריך". ילד שמקבל ביטחון מההורים שלו — יכול להגיע לכל מקום.</p>
+</section>
+
+<!-- ================= 10 ================= -->
+<section class="chapter">
+  <div class="chapter-head"><div class="num">פרק עשירי</div><h2>לילדים ולנכדים</h2><div class="rule">✦</div></div>
+
+  <p>שמונים שנה. ילד מפרס, שעלה לארץ במדינה צעירה וענייה, שלא שלחו אותו לתיכון, שעבד בצמיגים ובבניין ובחשמל — ובסוף מצא את מקומו על הטנקים, בנה בית עם אמא שלכם, וגידל משפחה.</p>
+  <p>אני מסתכל עליכם היום — על הלימודים שלכם, על התארים, על הבתים שבניתם, על הנכדים — ואני יודע שכל מה שלא היה לי, אני רואה אצלכם. וזה, ילדים, השכר הכי גדול שאבא יכול לבקש.</p>
+  <p>תזכרו מאיפה באתם. תזכרו את סבא חיים, שעבד יותר מכולם למרות הנכות. תזכרו את השם קדאם־זדה — "יש לו מזל". ותזכרו שפרנסה לא באה בקלות, שלכל גיל יש עומס, ושצריך להציב מטרות וגם לשמוח במה שיש.</p>
+  <p>ועכשיו, כמו שאומרים אצלנו בסוף כל שיחה טובה בערב שבת —</p>
+
+  <div style="break-inside:avoid">
+  <div class="quote">שבת שלום, כל טוב.</div>
+  <p style="text-align:left; margin-top:6mm; font-size:13pt; color:var(--brown)">באהבה,<br><b>אבא וסבא — יוסף</b></p>
+  </div>
+</section>
+
+<!-- ================= BLESSINGS PAGES ================= -->
+<section class="lines">
+  <div class="chapter-head"><h2>ברכות מהמשפחה</h2><div class="rule">✦</div></div>
+  <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+</section>
+<section class="lines">
+  <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  <div class="ln"></div><div class="ln"></div>
+</section>
+
+</body>
+</html>
